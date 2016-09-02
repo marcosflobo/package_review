@@ -17,16 +17,16 @@ Source3:        congress.logrotate
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python-oslo-config >= 3.7.0
-BuildRequires:  python-oslo-db
-BuildRequires:  python-oslo-i18n
-BuildRequires:  python-oslo-log
-BuildRequires:  python-oslo-messaging
-BuildRequires:  python-oslo-middleware
-BuildRequires:  python-oslo-policy
-BuildRequires:  python-oslo-serialization
-BuildRequires:  python-oslo-service
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python2-oslo-config >= 3.7.0
+BuildRequires:  python2-oslo-db
+BuildRequires:  python2-oslo-i18n
+BuildRequires:  python2-oslo-log
+BuildRequires:  python2-oslo-messaging
+BuildRequires:  python2-oslo-middleware
+BuildRequires:  python2-oslo-policy
+BuildRequires:  python2-oslo-serialization
+BuildRequires:  python2-oslo-service
+BuildRequires:  python2-oslo-sphinx
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 BuildRequires:  systemd
@@ -37,7 +37,7 @@ Requires: python-%{pypi_name}-doc = %{version}-%{release}
 %description
 Support of Congress for OpenStack.
 
-%package -n     python2-%{pypi_name}
+%package -n     python-%{pypi_name}
 Summary:        OpenStack Congress Service
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
@@ -46,26 +46,26 @@ Requires: python-alembic >= 0.8.0
 Requires: python-babel >= 1.3
 Requires: python-dateutil >= 2.4.2
 Requires: python-eventlet >= 0.18.2
-Requires: python-ceilometerclient >= 2.2.1
-Requires: python-cinderclient >= 1.3.1
-Requires: python-glanceclient >= 2.0.0
-Requires: python-heatclient >= 0.6.0
-Requires: python-keystoneclient >= 1.6.0
-Requires: python-keystonemiddleware >= 4.0.0
-Requires: python-muranoclient >= 0.8.2
-Requires: python-neutronclient >= 2.6.0
-Requires: python-novaclient >= 2.29.0
-Requires: python-oslo-config >= 3.7.0
-Requires: python-oslo-context >= 0.2.0
-Requires: python-oslo-db >= 4.1.0
-Requires: python-oslo-log >= 1.14.0
-Requires: python-oslo-messaging >= 4.0.0
-Requires: python-oslo-middleware >= 3.0.0
-Requires: python-oslo-policy >= 0.5.0
-Requires: python-oslo-serialization >= 1.10.0
-Requires: python-oslo-service >= 1.0.0
-Requires: python-oslo-utils >= 3.5.0
-Requires: python-oslo-vmware >= 1.16.0
+Requires: python2-ceilometerclient >= 0:2.2.1
+Requires: python2-cinderclient >= 0:1.3.1
+Requires: python2-glanceclient >= 1:2.0.0
+Requires: python2-heatclient >= 0:0.6.0
+Requires: python2-keystoneclient >= 1:1.6.0
+Requires: python2-keystonemiddleware >= 0:4.0.0
+Requires: python2-muranoclient >= 0:0.8.2
+Requires: python2-neutronclient >= 0:2.6.0
+Requires: python2-novaclient >= 1:2.29.0
+Requires: python2-oslo-config >= 2:3.7.0
+Requires: python2-oslo-context >= 0:0.2.0
+Requires: python2-oslo-db >= 0:4.1.0
+Requires: python2-oslo-log >= 0:1.14.0
+Requires: python2-oslo-messaging >= 0:4.0.0
+Requires: python2-oslo-middleware >= 0:3.0.0
+Requires: python2-oslo-policy >= 0:0.5.0
+Requires: python2-oslo-serialization >= 0:1.10.0
+Requires: python2-oslo-service >= 0:1.0.0
+Requires: python2-oslo-utils >= 0:3.5.0
+Requires: python2-oslo-vmware >= 0:1.16.0
 Requires: python-paste
 Requires: python-paste-deploy >= 1.5.0
 Requires: python-pbr >= 1.6
@@ -74,7 +74,7 @@ Requires: python-six >= 1.9.0
 Requires: python-swiftclient >= 2.2.0
 Requires: python-webob >= 1.2.3
 
-%description -n python2-%{pypi_name}
+%description -n python-%{pypi_name}
 OpenStack Congress Service is an open policy framework for OpenStack
 
 # Documentation package
@@ -143,7 +143,7 @@ exit 0
 %postun
 %systemd_postun_with_restart openstack-congress-server.service
 
-%files -n python2-%{pypi_name}
+%files -n python-%{pypi_name}
 %license LICENSE
 %doc README.rst
 %{python2_sitelib}/antlr3runtime*
