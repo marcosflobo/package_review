@@ -17,7 +17,7 @@ Source3:        congress.logrotate
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
-BuildRequires:  python2-oslo-config >= 3.7.0
+BuildRequires:  python2-oslo-config
 BuildRequires:  python2-oslo-db
 BuildRequires:  python2-oslo-i18n
 BuildRequires:  python2-oslo-log
@@ -99,7 +99,7 @@ rm -rf {test-,}requirements.txt tools/{pip,test}-requires
 %py2_build
 
 # Generate sample config and add the current directory to PYTHONPATH so
-# oslo-config-generator doesn't skip heat's entry points.
+# oslo-config-generator doesn't skip congress entry points.
 PYTHONPATH=. oslo-config-generator --config-file=./etc/congress-config-generator.conf --output-file=./etc/congress.conf
 
 # generate html docs 
@@ -136,12 +136,16 @@ exit 0
 
 %post
 %systemd_post openstack-congress-server.service
+%systemd_post openstack-congress-db-manage.service
+
 
 %preun
 %systemd_preun openstack-congress-server.service
+%systemd_preun openstack-congress-db-manage.service
 
 %postun
 %systemd_postun_with_restart openstack-congress-server.service
+%systemd_postun_with_restart openstack-congress-db-manage.service
 
 %files -n python-%{pypi_name}
 %license LICENSE
@@ -163,6 +167,7 @@ exit 0
 
 
 %files -n python-%{pypi_name}-doc
+%license LICENSE
 %doc html
 
 
