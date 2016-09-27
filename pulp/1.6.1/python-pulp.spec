@@ -27,7 +27,7 @@ Requires:       python2-pyparsing
 
 %description -n python2-%{pypi_name} %{_description}
 
-Python 2 version.
+#Python 2 version.
 
 %package -n python3-%{pypi_name}
 Summary:        %{summary}
@@ -39,7 +39,7 @@ Requires:       python3-pyparsing
 
 %description -n python3-%{pypi_name} %{_description}
 
-Python 3 version.
+#Python 3 version.
 
 %prep
 %autosetup -n %{pypi_name}-%{version}
@@ -69,6 +69,6 @@ rm -f test-requirements.txt
 %{_bindir}/pulp
 
 %changelog
-* Tue Sep 6 2016 Marcos Fermin Lobo <lobo@lukos.org> - 1.6.1-1
+* Tue Sep 27 2016 Marcos Fermin Lobo <lobo@lukos.org> - 1.6.1-1
 - First RPM
 
